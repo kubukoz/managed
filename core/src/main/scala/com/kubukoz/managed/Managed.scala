@@ -1,4 +1,4 @@
-package com.kubukoz
+package com.kubukoz.managed
 
 import cats._
 import cats.implicits._
