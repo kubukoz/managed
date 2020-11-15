@@ -16,6 +16,10 @@ inThisBuild(
   )
 )
 
+val noPublishPlease = Seq(
+  skip in publish := true
+)
+
 def crossPlugin(x: sbt.librarymanagement.ModuleID) = compilerPlugin(
   x.cross(CrossVersion.full)
 )
@@ -48,10 +52,13 @@ val effect = project
   )
   .dependsOn(core)
 
+val demo =
+  project.settings(commonSettings, noPublishPlease).dependsOn(core, effect)
+
 val managed =
   project
     .in(file("."))
     .settings(commonSettings)
-    .settings(skip in publish := true)
-    .dependsOn(core, effect)
-    .aggregate(core, effect)
+    .settings(noPublishPlease)
+    .dependsOn(core, effect, demo)
+    .aggregate(core, effect, demo)
