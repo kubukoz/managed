@@ -1,3 +1,6 @@
+val Scala212 = "2.12.12"
+val Scala213 = "2.13.3"
+
 inThisBuild(
   List(
     organization := "com.kubukoz",
@@ -29,9 +32,9 @@ val compilerPlugins = List(
   crossPlugin("com.github.cb372" % "scala-typed-holes" % "0.1.5"),
   compilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1")
 )
-
 val commonSettings = Seq(
-  scalaVersion := "2.13.3",
+  scalaVersion := Scala212,
+  crossScalaVersions := Seq(Scala212, Scala213),
   scalacOptions --= Seq("-Xfatal-warnings"),
   name := "managed",
   libraryDependencies ++= Seq(
