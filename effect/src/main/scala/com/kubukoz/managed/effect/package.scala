@@ -1,7 +1,6 @@
 package com.kubukoz.managed
 
 import cats.effect._
-import com.kubukoz.managed.Managed
 import com.kubukoz.managed.Managed._
 import skolems.∀
 
